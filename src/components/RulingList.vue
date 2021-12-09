@@ -1,7 +1,12 @@
 <template>
   <div>
-    <RulingItem/>
-
+    <div
+      v-for="(candidate, index) in candidates"
+      :key="index">
+      <RulingItem
+        class="mb-4"
+        :candidate="candidate"/>
+    </div>
   </div>
 </template>
 
@@ -14,6 +19,9 @@ export default {
     RulingItem,
   },
   computed: {
+    candidates() {
+      return this.$store.state.candidates;
+    },
   },
 };
 
