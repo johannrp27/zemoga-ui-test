@@ -15,6 +15,9 @@ export default {
     Header,
     RulingList,
   },
+  created() {
+    this.$store.dispatch('GET_CANDIDATES');
+  },
 };
 </script>
 
