@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center mb-4">
     <h2 class="m-0 flex-grow-1">Previous Rulings</h2>
     <div>
       <select class="form-select px-5" aria-label="Select visualization type">
