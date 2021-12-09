@@ -5,13 +5,13 @@
         <div class="col-3 card__content__poll">
           <div
             :class="[votesUp > votesDown ? 'bg-primary' : 'bg-secondary']"
-            class="d-inline-block text-center px-2 py-1 rounded-0">
-            <img :src="mostVoted" class="fs-1">
+            class="d-inline-block text-center px-2 py-2 rounded-0">
+            <img :src="mostVoted" class="votes">
           </div>
         </div>
         <div class="col-5 card__content__info py-2">
-          <h3 class="text-white">{{ candidate.name }}</h3>
-          <p>{{ shortDescription }}</p>
+          <h3 class="text-white fw-normal">{{ candidate.name }}</h3>
+          <p class="fw-light">{{ shortDescription }}</p>
         </div>
         <div class="col card__content__vote text-end py-2">
           <div class="me-2">
@@ -20,10 +20,10 @@
             </div>
             <div class="d-flex gap-2 justify-content-end">
               <button class="btn btn-primary rounded-0">
-                <img src="../assets/thumbs-up.svg" class="fs-1" alt="Vote thumb up">
+                <img src="../assets/thumbs-up.svg" class="votes" alt="Vote thumb up">
               </button>
               <button class="btn btn-secondary rounded-0">
-                <img src="../assets/thumbs-down.svg" alt="Vote thumb down">
+                <img src="../assets/thumbs-down.svg" class="votes" alt="Vote thumb down">
               </button>
               <button class="btn btn-custom text-white rounded-0">
                 Vote now
@@ -96,14 +96,15 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
+@import "../scss/variables";
 
 .card.candidate {
   background: url(../assets/pope-francis.png) no-repeat,
   linear-gradient(90deg,
-    rgb(149 149 149) 0%,
-    rgb(104 104 104) 50%,
-    rgb(149 149 149) 100%);
+    rgb(149, 149, 149) 0%,
+    rgb(104, 104, 104) 50%,
+    rgb(149, 149, 149) 100%);
   background-size: contain;
 }
 
@@ -112,14 +113,19 @@ export default {
 }
 
 .gauge__bar__upvotes.progress-bar {
-  background-color: rgba(var(--color-green-positive), 0.5);
+  background-color: rgba($primary-100, 0.5);
 }
 
 .gauge__bar__downvotes.progress-bar {
-  background-color: rgba(var(--color-yellow-negative), 0.5);
+  background-color: rgba($secondary-100, 0.5);
 }
+
 .btn.btn-custom {
   border: 1px solid white;
   background-color: rgb(70,70,70);
+}
+
+.votes {
+  width: 1.3rem;
 }
 </style>
