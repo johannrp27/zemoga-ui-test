@@ -1,18 +1,25 @@
 <template>
-  <div class="card candidate border-0 rounded-0 text-white h-100">
-    <div class="row g-0 card__content pt-5 mt-5 mt-sm-0 pt-sm-0 h-100">
-      <div class="col-2 col-sm-3 card__content__poll">
+  <div class="card candidate border-0 rounded-0 text-white h-100"
+    :style="type === 'grid' && {
+      backgroundSize: 'cover'
+    }">
+    <div class="row g-0 card__content pt-5 mt-5 mt-sm-0 h-100"
+      :class="[type === 'list' ? 'pt-sm-0 ' : '']">
+      <div class="col-2 card__content__poll"
+        :class="[type === 'grid' ? 'col-2' : 'col-sm-3']">
         <div
           :class="[votesUp > votesDown ? 'bg-primary' : 'bg-secondary']"
           class="d-inline-block text-center px-2 py-2 rounded-0">
           <img :src="mostVoted" class="votes">
         </div>
       </div>
-      <div class="col-8 col-sm-5 card__content__info py-2">
+      <div class="col-8 card__content__info py-2"
+        :class="[type === 'grid' ? 'col-8' : 'col-sm-5']">
         <h3 class="text-white fw-normal text-truncate">{{ candidate.name }}</h3>
         <p class="fw-light">{{ shortDescription }}</p>
       </div>
-      <div class="col-10 col-sm-4 card__content__vote py-2 pe-sm-2">
+      <div class="col-10 card__content__vote py-2 pe-sm-2"
+        :class="[type === 'grid' ? 'col-8' : 'col-sm-4']">
         <div class="pb-2 text-end">
           <span v-if="isSubmited">Thank you for your vote!</span>
           <span v-else>{{ candidate.category }}</span>
@@ -22,7 +29,7 @@
           class="d-flex gap-2 justify-content-end votes__btn">
           <button
           class="btn btn-primary rounded-0"
-          @click.prevent="vote(1)">
+          @click.prevent="vote('up')">
             <img
               src="../assets/thumbs-up.svg"
               class="votes"
@@ -30,7 +37,7 @@
           </button>
           <button
             class="btn btn-secondary rounded-0"
-            @click.prevent="vote(-1)">
+            @click.prevent="vote('down')">
             <img
               src="../assets/thumbs-down.svg"
               class="votes"
@@ -96,6 +103,7 @@ export default {
   },
   props: {
     candidate: Object,
+    type: String,
   },
   computed: {
     totalVotes() {
@@ -118,12 +126,15 @@ export default {
     },
   },
   methods: {
-    vote(count) {
-      this.selectedVote = count;
-      console.log(count);
+    vote(vote) {
+      this.selectedVote = vote;
     },
     submitVote() {
-      console.log('submit', this.selectedVote);
+      const data = {
+        id: this.candidate.id,
+        vote: this.selectedVote,
+      };
+      this.$store.dispatch('VOTE_CANDIDATE', data);
       this.isSubmited = true;
     },
     submitAgain() {
