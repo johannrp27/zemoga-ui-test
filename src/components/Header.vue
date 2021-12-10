@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center mb-4">
     <h2 class="m-0 flex-grow-1">Previous Rulings</h2>
     <div>
-      <select class="form-select px-5" aria-label="Select visualization type">
+      <select class="form-select px-5 d-none d-sm-block" aria-label="Select visualization type">
         <option selected value="list">List</option>
         <option value="grid">Grid</option>
       </select>
