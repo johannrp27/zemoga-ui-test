@@ -1,5 +1,5 @@
 export default {
   candidates: [],
   currentVote: {},
-  visualization: 'list',
+  visualization: 'grid',
 };

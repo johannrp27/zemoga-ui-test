@@ -7,8 +7,8 @@
         @change="setChange"
         class="form-select px-5 d-none d-sm-block"
         aria-label="Select visualization type">
-        <option selected value="list">List</option>
-        <option value="grid">Grid</option>
+        <option value="list">List</option>
+        <option selected value="grid">Grid</option>
       </select>
     </div>
   </div>
@@ -19,7 +19,7 @@ export default {
   name: 'Header',
   data() {
     return {
-      selectedOpt: 'list',
+      selectedOpt: 'grid',
     };
   },
   methods: {
