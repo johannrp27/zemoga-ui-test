@@ -102,4 +102,8 @@ export default {
     border: 1px solid white;
     background-color: rgb(70,70,70);
   }
+  .btn.btn-primary:focus, .btn.btn-secondary:focus {
+    border-color: white;
+    box-shadow: 0 0 0 1px #ffffff;
+  }
 </style>
