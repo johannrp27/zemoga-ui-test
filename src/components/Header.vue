@@ -5,7 +5,7 @@
       <select
         v-model="selectedOpt"
         @change="setChange"
-        class="form-select px-5 d-none d-sm-block"
+        class="form-select d-none d-sm-block rounded-0 border-2 border-dark"
         aria-label="Select visualization type">
         <option value="list">List</option>
         <option selected value="grid">Grid</option>
@@ -28,9 +28,9 @@ export default {
     },
   },
 };
-
 </script>
-
-<style>
-
+<style lang="scss">
+  .form-select {
+    padding: 5px 25px;
+  }
 </style>
