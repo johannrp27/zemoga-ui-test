@@ -1,30 +1,43 @@
 <template>
-  <div class="row g-0 flex-nowrap flex-sm-wrap overflow-scroll">
+  <div
+    v-if="show === 'grid'"
+    class="row type__grid">
     <div
       v-for="(candidate, index) in candidates"
       :key="index"
-      class="me-4 mb-0 me-sm-0 mb-sm-4"
-      :class="[visualization === 'grid' ? 'col-sm-4 col-12 pe-3' : 'w-fixed']">
-      <RulingItem
-        :type="visualization"
-        :candidate="candidate"/>
+      class="col-10 col-sm-4 mb-4">
+      <CandidateItemGrid
+        :candidate="candidate" />
+    </div>
+  </div>
+  <div
+    v-else
+    class="row type__list">
+    <div
+      v-for="(candidate, index) in candidates"
+      :key="index"
+      class="col-12 mb-4">
+      <CandidateItemList
+        :candidate="candidate" />
     </div>
   </div>
 </template>
 
 <script>
-import RulingItem from './RulingItem.vue';
+import CandidateItemList from './CandidateItemList.vue';
+import CandidateItemGrid from './CandidateItemGrid.vue';
 
 export default {
   name: 'RulingList',
   components: {
-    RulingItem,
+    CandidateItemList,
+    CandidateItemGrid,
   },
   computed: {
     candidates() {
       return this.$store.state.candidates;
     },
-    visualization() {
+    show() {
       return this.$store.state.visualization;
     },
   },
@@ -32,13 +45,16 @@ export default {
 
 </script>
 
-<style>
-  .row .w-fixed {
-    width: 85%;
+<style lang="scss">
+  .row.type__grid {
+    overflow-x: scroll;
+    flex-wrap: nowrap;
   }
+
   @media (min-width: 576px) {
-    .row .w-fixed {
-      width: 100%;
+    .row.type__grid {
+      overflow-x: auto;
+      flex-wrap: wrap;
     }
   }
 </style>
