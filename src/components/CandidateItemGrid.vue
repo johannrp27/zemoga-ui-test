@@ -10,7 +10,9 @@
         id="standing"
         :class="[votesUp > votesDown ? 'bg-primary' : 'bg-secondary']"
         class="position-absolute px-2 py-1 start-0">
-        <img :src="mostVoted">
+        <img
+          :src="mostVoted"
+          alt="Current reputation">
       </div>
 
       <div class="candidate__info mt-auto">
@@ -58,7 +60,7 @@ export default {
       return `${this.candidate.description.slice(0, 80)}...`;
     },
     mostVoted() {
-      if (this.positivePerc >= this.negativePerc) {
+      if (this.candidate.votes.positive >= this.candidate.votes.negative) {
         return '../assets/img/thumbs-up.svg';
       }
       return '../assets/img/thumbs-down.svg';

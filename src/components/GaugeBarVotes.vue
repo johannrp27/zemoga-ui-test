@@ -5,10 +5,11 @@
       role="progressbar"
       :style="{width: votesUp + '%'}"
       :aria-valuenow="votesUp"
+      aria-label="Percentage Votes Up"
       aria-valuemin="0"
       aria-valuemax="100">
       <div class="d-flex px-3 py-1 gap-2">
-        <img src="../assets/thumbs-up.svg" class="" alt="Vote thumb up">
+        <img src="../assets/thumbs-up.svg" alt="Vote thumb up">
         <span class="font__custom">{{ votesUp }}%</span>
       </div>
     </div>
@@ -17,6 +18,7 @@
       role="progressbar"
       :style="{width: votesDown + '%'}"
       :aria-valuenow="votesDown"
+      aria-label="Percentage Votes Down"
       aria-valuemin="0"
       aria-valuemax="100">
       <div class="d-flex px-3 py-1 gap-2 justify-content-end">
