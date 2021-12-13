@@ -8,7 +8,7 @@ This project was created with Vue2 - Bootstrap - SCSS
 - [ ] SCSS Tooling
 - [ ] Node backend
 
-First, clone [this repo](https://github.com/johannrp27/zemoga-back-ui) and follow its README. This is just the server.
+First step: Clone [this repo](https://github.com/johannrp27/zemoga-back-ui) and follow its README. This is will start the server.
 
 Follow next instructions to run the project
 
